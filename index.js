@@ -18,7 +18,6 @@ app.post('/', (req, res) => {
 
       child.stdout.on('data', (data) => {
         console.log(`stdout: ${data}`);
-        res.send(`stdout: ${data}`);
       });
         
       child.stderr.on('data', (data) => {
@@ -28,6 +27,7 @@ app.post('/', (req, res) => {
       child.on('close', (code) => {
         console.log(`child process exited with code ${code}`);
       });
+    res.send('Streaming...');
 });
 
 app.use('/', express.static(__dirname + '/public'));
